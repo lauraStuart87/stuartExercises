@@ -8,14 +8,37 @@ import org.openqa.selenium.WebElement;
 
 public class Login {
 
+    private final static String SYSTEM_PROPERTY = System.setProperty("webdriver.chrome.driver", "/Users/MundoTrekkie/Documents/chromedriver");
+    public static WebDriver driver = new ChromeDriver();
+    private final static String EMAIL = "***";
+    private final static String PASSWORD = "****";
+
+    private final static String EMAIL_FIELD_ID = "email";
+    private final static String PASSWORD_FIELD_ID = "password";
+    private final static String LOGGING_BTN_ID = "logInButton";
 
     public void openPage() {
-        System.setProperty("webdriver.chrome.driver", "/Users/MundoTrekkie/Documents/chromedriver");
-        WebDriver driver = new ChromeDriver();
         driver.get("http://dashboard-sandbox.stuart.com");
     }
 
-    public void logIn() {
-        WebElement emailField = WebDriver.findElement(By.id("email"));
+    public void logInPage() {
+        inputEmail();
+        inputPassword();
+        startSession();
+    }
+
+    private void inputEmail(){
+        WebElement emailField = driver.findElement(By.id(EMAIL_FIELD_ID));
+        emailField.sendKeys(EMAIL);
+    }
+
+    private void inputPassword(){
+        WebElement passwordField = driver.findElement(By.id(PASSWORD_FIELD_ID));
+        passwordField.sendKeys(PASSWORD);
+    }
+
+    private void startSession(){
+        WebElement startSessionBtn = driver.findElement(By.id(LOGGING_BTN_ID));
+        startSessionBtn.click();
     }
 }
