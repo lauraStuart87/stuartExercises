@@ -25,11 +25,14 @@ public class RequestDelivery {
 
     @Test
     public void userIsAbleToRequestAnInmediateDeliveryByCar(){
+        //We log in
         userLogsIn();
+        //We add the pick up and drop off addresses and the type of transport
         deliveryRequest.userFillsPickUpField();
         deliveryRequest.userFillsDestinationField();
         deliveryRequest.userSelectsCarAsVehicle();
         deliveryRequest.userRequestsDelivery();
+        //In the "In Progress" tab we check that the data of the delivery is correct
         assertThat(deliveryRequest.getLastActiveJobAddresses(), containsString("Avinguda Diagonal 5"));
         assertThat(deliveryRequest.getLastActiveJobAddresses(), containsString("Carrer del mar 3"));
     }
