@@ -14,6 +14,6 @@ public class LoginInTest {
     @Test
     public void userIsAbleToLogIn(){
         logIn.userLogsIn();
-        assertThat(deliveryRequest.getPickUpCard(), containsString("Recogida"));
+        assertThat(deliveryRequest.getPickUpCardTitle(), containsString("Recogida"));
     }
 }
