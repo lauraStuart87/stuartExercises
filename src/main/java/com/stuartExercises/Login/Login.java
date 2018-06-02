@@ -11,20 +11,25 @@ public class Login {
     private final static String SYSTEM_PROPERTY = System.setProperty("webdriver.chrome.driver", "/Users/MundoTrekkie/Documents/chromedriver");
     public static WebDriver driver = new ChromeDriver();
     private final static String EMAIL = "***";
-    private final static String PASSWORD = "****";
+    private final static String PASSWORD = "***";
 
     private final static String EMAIL_FIELD_ID = "email";
     private final static String PASSWORD_FIELD_ID = "password";
     private final static String LOGGING_BTN_ID = "logInButton";
 
-    public void openPage() {
+    private void openPage() {
         driver.get("http://dashboard-sandbox.stuart.com");
     }
 
-    public void logInPage() {
+    private void logInPage() {
         inputEmail();
         inputPassword();
         startSession();
+    }
+
+    public void userLogsIn(){
+        openPage();
+        logInPage();
     }
 
     private void inputEmail(){
