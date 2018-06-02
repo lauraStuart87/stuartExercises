@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
-import static com.stuartExercises.Login.Login.driver;
+import static com.stuartExercises.Login.Login.getDriver;
 
 
 public class DeliveryRequest {
@@ -28,23 +28,23 @@ public class DeliveryRequest {
     private static final String TRANSPORTATIONS_PRICES_CLASS = "_2GUaVkNp";
 
     private WebElement getPickUpCardParent(){
-        return driver.findElement(By.id(PICK_UP_CARD_ID));
+        return getDriver().findElement(By.id(PICK_UP_CARD_ID));
     }
 
     private WebElement getDropOffCardParent(){
-        return driver.findElement(By.id(DROP_OFF_CARD_ID));
+        return getDriver().findElement(By.id(DROP_OFF_CARD_ID));
     }
 
     private WebElement getRequestDeliveryBtnParent(){
-        return driver.findElement(By.className(REQUEST_DELIVERY_PARENT_CLASS));
+        return getDriver().findElement(By.className(REQUEST_DELIVERY_PARENT_CLASS));
     }
 
     private WebElement getLastAciveJobParent(){
-        return driver.findElement(By.className(LAST_ACTIVE_JOB_CARD_CLASS));
+        return getDriver().findElement(By.className(LAST_ACTIVE_JOB_CARD_CLASS));
     }
 
     private WebElement getTrasportationCardParent(){
-        return driver.findElement(By.id(TRANSPORTATION_CARD_PARENT_ID));
+        return getDriver().findElement(By.id(TRANSPORTATION_CARD_PARENT_ID));
     }
 
     public String getPickUpCardTitle() {
@@ -54,17 +54,17 @@ public class DeliveryRequest {
     }
 
     private void waitForIdToBeVisible(String id){
-        WebDriverWait wait = new WebDriverWait(driver, 20);
+        WebDriverWait wait = new WebDriverWait(getDriver(), 20);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(id)));
     }
 
     private void waitForClassToBeVisible(String className){
-        WebDriverWait wait = new WebDriverWait(driver, 20);
+        WebDriverWait wait = new WebDriverWait(getDriver(), 20);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.className(className)));
     }
 
     private void waitForElementToByClickableByLocator(String locator){
-        WebDriverWait wait = new WebDriverWait(driver, 20);
+        WebDriverWait wait = new WebDriverWait(getDriver(), 20);
         wait.until(ExpectedConditions.elementToBeClickable(By.id(locator)));
     }
 

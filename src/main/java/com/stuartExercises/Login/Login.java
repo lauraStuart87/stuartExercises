@@ -9,7 +9,6 @@ import org.openqa.selenium.WebElement;
 public class Login {
 
     private final static String SYSTEM_PROPERTY = System.setProperty("webdriver.chrome.driver", "/Users/MundoTrekkie/Documents/chromedriver");
-    public static WebDriver driver = new ChromeDriver();
     private final static String EMAIL = "***";
     private final static String PASSWORD = "***";
 
@@ -17,8 +16,27 @@ public class Login {
     private final static String PASSWORD_FIELD_ID = "password";
     private final static String LOGGING_BTN_ID = "logInButton";
 
+    private static WebDriver driver;
+
+    public static WebDriver getDriver(){
+        return driver;
+    }
+
+    private void setUpDriver(){
+        driver = new ChromeDriver();
+    }
+
     private void openPage() {
+        setUpDriver();
         driver.get("http://dashboard-sandbox.stuart.com");
+    }
+
+    public void closePage(){
+        //Clear the cookies on the browser
+        driver.manage().deleteAllCookies();
+        driver.navigate().refresh();
+        //Close the browser
+        driver.close();
     }
 
     private void logInPage() {
